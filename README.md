@@ -1,5 +1,9 @@
 # Carb Manager Dev Assignment
 
+## How I would handle reusability of PremiumRecipeCard
+
+There's a couple smaller elements of both designs that could be componentized such as the 5 star review, and the icon-stat pairings for prep time, calories, and macros. I think the review section would be the only thing worth componentizing though because the rest of the design is too simple to be worth breaking out into components, unless many more components are likely to make use them with the same font-sizes, margins etc. In the case of the Recipe of the Day variation, it does make use of different font colors, font sizes, and margins for its macro stats. For this reason, I think the cleanest solution would be a v-if implementation based on a boolean prop value that plugs the values into a mostly new layout. It looks like this would only add a couple dozen more lines for one variation. I would build 5-star review component to share between them though. If there are **many** versions of the card then I would break out each variation of the card into a separate component since there could be tree-shaking penalties to having many unused v-if blocks if certain variations were never used on certain pages. There are at least no rendering penalties to this method, though.
+
 ## Design
 
 **Card:**
