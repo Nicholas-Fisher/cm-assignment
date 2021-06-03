@@ -8,30 +8,54 @@
       <p>See the README file for assignment requirements.</p>
 
       <div class="premium-recipe-wrapper">
-        <PremiumRecipeCard />
+        <PremiumRecipeCard
+          title="Low Carb Thai Chicken Curry With Coconut Cauliflower Rice"
+          energy-type="cal"
+          :rating="3.5"
+          :number-of-ratings="200"
+          :prep-time-in-mins="24"
+          :energy-units="489"
+          :carbs-in-grams="20"
+          :protein-in-grams="16"
+          :fat-in-grams="6"
+          :image="cardImage"
+          :is-favorited="false"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import PremiumRecipeCard from "./components/PremiumRecipeCard.vue";
+import PremiumRecipeCard from 'src/components/PremiumRecipeCard.vue';
+import cardImage from 'src/assets/images/thai-chicken.png';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    PremiumRecipeCard
-  }
+    PremiumRecipeCard,
+  },
+  data() {
+    return {
+      cardImage,
+    };
+  },
 };
 </script>
 
 <style>
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 #app {
-  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+  font-family: 'proxima-nova', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color: #e5e5e5;
   margin-top: 60px;
 }
 </style>

@@ -1,3 +1,1 @@
-<svg width="10" height="20" viewBox="0 0 10 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M10 16.0737V0L7.19 6.97895L0 7.62105L5.46 12.6L3.82 20L10 16.0737Z" fill="#FDA01E" />
-</svg>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><defs><style>.cls-1{fill:#aaaeb3;opacity:0.5;isolation:isolate;}.cls-1,.cls-2{fill-rule:evenodd;}.cls-2{fill:#fda01e;}</style></defs><path class="cls-1" d="M10,16.07,16.18,20l-1.64-7.4,5.46-5L12.81,7,10,0,7.19,7,0,7.62l5.46,5L3.82,20Z"/><path class="cls-2" d="M10,16.07V0L7.19,7,0,7.62l5.46,5L3.82,20Z"/></svg>
