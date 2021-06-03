@@ -17,6 +17,8 @@ Some other random notes:
     terms of cleanliness. It might also run slightly faster and makes
     translation refactoring easier down the line.
 
+3. The ratings knob in the storybook won't update the component unless you toggle number of ratings to 0 first. Not sure why.
+
 That was fun! Thanks for the challenge.
 
 ## Design
