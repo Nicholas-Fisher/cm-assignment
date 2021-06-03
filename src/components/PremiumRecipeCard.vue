@@ -123,7 +123,7 @@ export default {
   },
   computed: {
     formattedPrepTime() {
-      return this.prepTimeInMins > 60 ? `${Math.floor(this.prepTimeInMins/60)} hr ${this.prepTimeInMins%60} min` : `${this.prepTimeInMins} min`;
+      return this.prepTimeInMins > 60 ? `${Math.floor(this.prepTimeInMins / 60)} hr ${this.prepTimeInMins % 60} min` : `${this.prepTimeInMins} min`;
     },
     formattedEnergyUnits() {
       return this.energyType === 'cal' ? `${this.energyUnits} Calories` : `${Math.round(this.energyUnits * 4.184)} Kilojoules`;
