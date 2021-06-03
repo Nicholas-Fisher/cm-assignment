@@ -1,10 +1,10 @@
 <template>
-  <div class="premium-recipe-card">
+  <button class="premium-recipe-card">
     <div class="image-container" :style="{ backgroundImage: `url(${image})` }">
       <div class="gradient-cover">
         <button class="favorite-btn">
-          <img :src="heartFilledIcon" v-if="isFavorited" />
-          <img :src="heartIcon" v-else />
+          <img id="heart-filled" :src="heartFilledIcon" v-if="isFavorited" />
+          <img id="heart-empty" :src="heartIcon" v-else />
         </button>
         <div class="tag">
           <img :src="trophyIcon" />
@@ -29,30 +29,30 @@
         <div class="left-side">
           <div class="stats-pair">
             <img class="stats-icon" :src="clockIcon" />
-            <div class="stats-value" v-text="prepTimeInMins ? `${prepTimeInMins} min` : '-'" />
+            <div class="stats-value" v-text="formattedPrepTime" />
           </div>
           <div class="stats-pair">
             <img class="stats-icon" :src="caloriesIcon" />
-            <div class="stats-value" v-text="energyUnits ? `${energyUnits} Calories` : '-'" />
+            <div id="energy-value" class="stats-value" v-text="formattedEnergyUnits" />
           </div>
         </div>
         <div class="right-side">
           <div class="stats-pair small">
             <div class="macro-dot carbs" />
-            <div class="stats-value" v-text="carbsInGrams ? `${carbsInGrams} g` : '-'" />
+            <div class="stats-value" v-text="`${carbsInGrams} g`" />
           </div>
           <div class="stats-pair small">
             <div class="macro-dot protein" />
-            <div class="stats-value" v-text="proteinInGrams ? `${proteinInGrams} g` : '-'" />
+            <div class="stats-value" v-text="`${proteinInGrams} g`" />
           </div>
           <div class="stats-pair small">
             <div class="macro-dot fats" />
-            <div class="stats-value" v-text="fatInGrams ? `${fatInGrams} g` : '-'" />
+            <div class="stats-value" v-text="`${fatInGrams} g`" />
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </button>
 </template>
 
 <script>
@@ -61,7 +61,7 @@ import heartFilledIcon from 'src/assets/icons/heart-filled.svg';
 import clockIcon from 'src/assets/icons/clock.svg';
 import caloriesIcon from 'src/assets/icons/calories.svg';
 import trophyIcon from 'src/assets/icons/trophy.svg';
-import ratingStar from './ratingStar.vue';
+import ratingStar from 'src/components/ratingStar.vue';
 
 export default {
   components: { ratingStar },
@@ -96,8 +96,8 @@ export default {
       default: '-',
     },
     image: {
-      type: Object,
-      default: null,
+      type: String,
+      default: '',
     },
     carbsInGrams: {
       type: Number,
@@ -122,8 +122,11 @@ export default {
     };
   },
   computed: {
+    formattedPrepTime() {
+      return this.prepTimeInMins > 60 ? `${Math.floor(this.prepTimeInMins/60)} hr ${this.prepTimeInMins%60} min` : `${this.prepTimeInMins} min`;
+    },
     formattedEnergyUnits() {
-      return this.energyType === 'cal' ? this.energyUnits : (this.energyUnits / 4.184).toFixed(2);
+      return this.energyType === 'cal' ? `${this.energyUnits} Calories` : `${Math.round(this.energyUnits * 4.184)} Kilojoules`;
     },
   },
   methods: {},
@@ -132,11 +135,20 @@ export default {
 
 <style lang="scss" scoped>
 .premium-recipe-card {
+  border: none;
+  margin: 0;
+  padding: 0;
   width: 343px;
   border-radius: 12px;
   overflow: hidden;
   background-color: #fff;
   box-shadow: 0px 13px 35px rgba(0, 30, 47, 0.1);
+  cursor: pointer;
+  &:hover {
+    .image-container {
+      opacity: 0.8;
+    }
+  }
 }
 .image-container {
   height: 200px;
@@ -145,6 +157,7 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   .gradient-cover {
+    box-sizing: border-box;
     padding: 16px 8px 12px 8px;
     display: flex;
     flex-direction: column;

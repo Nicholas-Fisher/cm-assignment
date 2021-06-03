@@ -44,11 +44,6 @@ export default {
 </script>
 
 <style>
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
 #app {
   font-family: 'proxima-nova', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
